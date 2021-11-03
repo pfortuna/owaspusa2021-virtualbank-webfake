@@ -1,0 +1,17 @@
+
+body {
+    padding:0;
+    margin:0;
+    width: 80px;
+    height: 80px;
+}
+
+.chat {
+    max-width: 80px;
+    cursor: pointer;
+}
+
+.chat > img {
+    max-width: 80px;
+}
+

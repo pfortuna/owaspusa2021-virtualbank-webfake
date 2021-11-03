@@ -1,0 +1,45 @@
+<div class="menu">
+    <div class="wrapper">
+        <a class="logo" href="/"><img src="/imgs/bank-logo.svg"></a>
+        <div class="menu-right"><span>By</span><img src="/imgs/logo.svg"></div>
+    </div>
+</div>
+<div class="page">
+    <div class="wrapper">
+        <div class="page-content">
+            <div class="account-menu col-md-3">
+                <div class="menu-card"><a href="/account"><h5>Account</h5></a></div>
+                <div class="menu-card"><a href="/transaction"><h5>New Transaction</h5></a></div>
+                <div class="menu-card"><a href="#services"><h5>Services</h5></a></div>
+                <div class="menu-card on"><a href="/settings"><h5>Settings</h5></a></div>
+                <div class="menu-card"><a href="/logout"><h5>Logout</h5></a></div>
+            </div>
+            <div class="account-content">
+                <h1 style="text-align: left">Settings</h1>
+                <div>
+                    <form class="box" id="change-settings">
+                        <label>Name</label>
+                        <p><script>document.write(user.firstName + ' ' + user.lastName)</script></p>
+                        <label for="email">Email</label>
+                        <input id="email" type="text" name="email">
+                        <label for="tfa">2FA</label>
+                        <input class="medium" id="tfa" type="text" name="tfa" step="0.01" min="0.01">
+                        <div><input id="sbmbtn" class="submit" type="submit" value="Submit"></div>
+                        <script>
+                            document.getElementById('email').value = window.user.email;
+                        </script>
+                    </form>
+                </div>
+            </div>
+            <div class="cboth"></div>
+        </div>
+
+    </div>
+</div>
+</div>
+<div class="footer">
+    <div class="row">
+        <jscrambler>Virtual Bank © All rights reserved</jscrambler>
+    </div>
+</div>
+<script src="/js/settings.js"></script>

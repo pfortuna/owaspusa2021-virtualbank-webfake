@@ -1,0 +1,8 @@
+<script>
+    if (!localStorage.getItem('user') && window.location.pathname !== '/') {
+        window.location.href = '/';
+    }
+    if (!window.user && localStorage.getItem('user')) {
+        window.user = JSON.parse(localStorage.getItem('user'));
+    }
+</script>

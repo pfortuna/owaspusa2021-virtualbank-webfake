@@ -1,0 +1,6 @@
+node_modules/
+package-lock.json
+.jscramblerrc
+public/js/bundle.js
+public/js/login.js
+public/js/settings.js
