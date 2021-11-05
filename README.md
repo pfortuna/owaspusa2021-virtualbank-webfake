@@ -8,14 +8,7 @@ Add the following to your /etc/hosts
 
 ### Build
 `npm i`
-`webpack --mode production`
-
-### Options
-You can enable or disable sending OTT with every login by setting to true `config.useOtt` in `index.js`.
 
 ## Running
 To run, type `npm run watch`
-Open `http://virtualbank.com:5000`
-
-## Improvements
-- Make OTT be used in all API calls
+Open `http://v1rtualbank.com:5000`

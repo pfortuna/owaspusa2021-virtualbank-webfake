@@ -8,23 +8,8 @@ window.addEventListener("load", () => {
         const id = window.user.id;
         const email = document.querySelector("#email").value;
         const tfa = document.querySelector("#tfa").value;
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
-            },
-            body: JSON.stringify({ email, tfa })
-        };
-    
-        return fetch(`http://api.virtualbank.com:4000/users/${id}`, requestOptions)
-            .then(handleResponse)
-            .then(user => {
-                window.user.email = user.email; //update global var
-                localStorage.setItem('user', JSON.stringify(window.user)); //update LS
-                //window.location.href = '/account';
-                return user;
-            });
+        //ToDo (Jas) - figure out where you want to send this data to
+        alert('data captured - what do we want to do with it?');
     });
 
     function handleResponse(response) {
