@@ -19,6 +19,7 @@
     "fs": "0.0.1-security",
     "https": "^1.0.0",
     "path": "^0.12.7",
+    "puppeteer": "^11.0.0",
     "ses": "^0.14.3",
     "totp-generator": "0.0.12"
   },
